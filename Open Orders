@@ -1,0 +1,38 @@
+# Endpoint: https://api.kraken.com/0/private/OpenOrders
+
+# Crypto limit orders placed via Kraken Pro
+
+{
+    "error": [],
+    "result": {
+        "open": {
+            "OQQGV6-YUWSZ-CTBVGH": {
+                "refid": None,
+                "userref": 0,
+                "status": "open",
+                "opentm": 1709365608.47665,
+                "starttm": 0,
+                "expiretm": 0,
+                "descr": {
+                    "pair": "XBTCAD",
+                    "type": "buy",
+                    "ordertype": "limit",
+                    "price": "82850.0",
+                    "price2": "0",
+                    "leverage": "none",
+                    "order": "buy 0.00010000 XBTCAD @ limit 82850.0",
+                    "close": "",
+                },
+                "vol": "0.00010000",
+                "vol_exec": "0.00000000",
+                "cost": "0.00000",
+                "fee": "0.00000",
+                "price": "0.00000",
+                "stopprice": "0.00000",
+                "limitprice": "0.00000",
+                "misc": "",
+                "oflags": "fciq",
+            }
+        }
+    },
+}
