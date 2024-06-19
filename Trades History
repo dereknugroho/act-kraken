@@ -1,12 +1,44 @@
 # Endpoint: https://api.kraken.com/0/private/TradesHistory
 
-# Crypto trades placed via Kraken Pro web interface
-
 {
     "error": [],
     "result": {
-        "count": 2,
+        "count": 4,
         "trades": {
+            "THN7JO-KR6JH-6OYHGU": {
+                "ordertxid": "OG5QGP-OTINQ-QD7RUJ",
+                "postxid": "TKH2SE-M7IF5-CFI7LT",
+                "pair": "XXBTZCAD",
+                "time": 1718823049.364046,
+                "type": "buy",
+                "ordertype": "market",
+                "price": "89218.60000",
+                "cost": "44.60930",
+                "fee": "0.17844",
+                "vol": "0.00050000",
+                "margin": "0.00000",
+                "leverage": "0",
+                "misc": "",
+                "trade_id": 3260341,
+                "maker": False,
+            },
+            "T2TA62-YNYUL-NKXRXF": {
+                "ordertxid": "OEGUPU-FQVN7-CSGUK5",
+                "postxid": "TKH2SE-M7IF5-CFI7LT",
+                "pair": "XXBTZCAD",
+                "time": 1709366997.0541508,
+                "type": "buy",
+                "ordertype": "market",
+                "price": "82975.70000",
+                "cost": "9.99857",
+                "fee": "0.02600",
+                "vol": "0.00012050",
+                "margin": "0.00000",
+                "leverage": "0",
+                "misc": "",
+                "trade_id": 3052347,
+                "maker": False,
+            },
             "TL55ZD-RVRUW-SWVKGP": {
                 "ordertxid": "OCRAHY-OK3QU-UJYXFG",
                 "postxid": "TKH2SE-M7IF5-CFI7LT",

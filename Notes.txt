@@ -1,0 +1,23 @@
+***************
+* Definitions *
+***************
+
+Trade ID
+• Associated with one crypto movement and one cash movement
+• Example: T2TA62-YNYUL-NKXRXF
+
+*************
+* Algorithm *
+*************
+
+• Read last transaction
+• Read order book
+• Calculate differential
+• Execute trade
+
+*********
+* To Do *
+*********
+
+- Check if orders placed via API show up in https://api.kraken.com/0/private/TradesHistory
+- 
