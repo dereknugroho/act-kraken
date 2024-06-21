@@ -10,14 +10,21 @@ Trade ID
 * Algorithm *
 *************
 
-• Read last transaction
+• Read last trade
 • Read order book
 • Calculate differential
-• Execute trade
+• [Execute trade]
+
+************
+* Comments *
+************
+
+• Cost = Price * Quantity
+• Net Cost = Cost * (1 - 0.4% Taker Fee)
+• https://www.kraken.com/features/fee-schedule
 
 *********
 * To Do *
 *********
 
-- Check if orders placed via API show up in https://api.kraken.com/0/private/TradesHistory
-- 
+• Implement trader.asset_live_market_value()
