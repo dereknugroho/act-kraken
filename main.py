@@ -3,39 +3,37 @@ import os
 import api_services, trader
 
 if __name__ == '__main__':
-    # base_url = 'https://api.kraken.com'
-    # key = os.environ['API_KEY_KRAKEN']
-    # sec = os.environ['API_SEC_KRAKEN']
+    pass
 
     ###########################
     # Test: trading algorithm #
     ###########################
 
-    # trader.asset_live_market_value(
-    #     'XBTCAD',
-    #     'buy'
-    # )
+    # print(f"Raw order book *****\n{api_services.order_book('XBTCAD')}")
+    # print(f"Cleaned order book *****\n{trader.clean_order_book('XBTCAD', 'sell', 0.5)}")
 
     #########################################
     # Test (API calls): non-trade execution #
     #########################################
 
-    # api_services.account_balances()
-    # api_services.trade_history()
-    # api_services.order_book('XBTUSD')
+    # print(api_services.account_balances())
+    # print(api_services.trade_history())
+    # print(api_services.order_book('XBTCAD'))
 
     #####################################
     # Test (API calls): trade execution #
     #####################################
 
     # order_type = 'market'
-    # direction = 'buy'
+    # direction = 'sell'
     # volume = 0.0005
     # pair = 'XBTUSD'
 
-    # api_services.add_order(
-    #     order_type,
-    #     direction,
-    #     volume,
-    #     pair,
+    # print(
+    #     api_services.add_order(
+    #         order_type,
+    #         direction,
+    #         volume,
+    #         pair,
+    #     )
     # )

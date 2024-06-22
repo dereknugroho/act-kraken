@@ -26,5 +26,3 @@ Trade ID
 *********
 * To Do *
 *********
-
-• Implement trader.asset_live_market_value()
