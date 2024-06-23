@@ -1,17 +1,16 @@
 import api_services
 
 # Generate a cleaned list of sorted bid or ask orders
-def clean_order_book(pair, direction, expected_trade_volume):
-    kraken_identifier = f'X{pair[:3]}Z{pair[3:]}'
+def clean_order_book(pair, kraken_pair_id, direction, expected_trade_volume):
     order_book = api_services.order_book(pair)
     cleaned_order_book = []
     cumulative_trade_volume = 0.0
 
     # Retrieve bid or ask order book
     if direction == 'buy':
-        order_book = order_book['result'][kraken_identifier]['asks']
+        order_book = order_book['result'][kraken_pair_id]['bids']
     elif direction == 'sell':
-        order_book = order_book['result'][kraken_identifier]['bids']
+        order_book = order_book['result'][kraken_pair_id]['asks']
     else:
         raise ValueError('direction argument must be "buy" or "sell"')
 
@@ -26,9 +25,17 @@ def clean_order_book(pair, direction, expected_trade_volume):
         else:
             return cleaned_order_book
 
-def last_trade_net_cost():
-    trade_history = api_services.trade_history()['result']['trades'].items()
-    last_trade = next(iter(trade_history))[1]
-    net_cost = float(last_trade['cost']) - float(last_trade['fee'])
+def last_buy_active_net_cost(bid_orders, last_trade_vol):
+    active_net_cost = 0.0
+    cumulative_order_vol = 0.0
 
-    return net_cost
+    for order in bid_orders:
+        cumulative_order_vol += order[1]
+        if cumulative_order_vol <= last_trade_vol:
+            active_net_cost += (cumulative_order_vol * order[0])
+        else:
+            excess_trade_volume = last_trade_vol - cumulative_order_vol + order[1]
+            active_net_cost += (excess_trade_volume * order[0])
+            break
+
+    return active_net_cost

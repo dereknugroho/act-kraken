@@ -1,11 +1,3 @@
-***************
-* Definitions *
-***************
-
-Trade ID
-• Associated with one crypto movement and one cash movement
-• Example: T2TA62-YNYUL-NKXRXF
-
 *************
 * Algorithm *
 *************
