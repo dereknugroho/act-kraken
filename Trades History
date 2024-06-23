@@ -3,8 +3,25 @@
 {
     "error": [],
     "result": {
-        "count": 13,
+        "count": 14,
         "trades": {
+            "TSERLH-FDNUC-B3V6JH": {
+                "ordertxid": "OTHY5V-FXPHP-LH7B4H",
+                "postxid": "TKH2SE-M7IF5-CFI7LT",
+                "pair": "XXBTZUSD",
+                "time": 1719173206.8245177,
+                "type": "sell",
+                "ordertype": "market",
+                "price": "64067.70000",
+                "cost": "32.03385",
+                "fee": "0.12814",
+                "vol": "0.00050000",
+                "margin": "0.00000",
+                "leverage": "0",
+                "misc": "",
+                "trade_id": 71212684,
+                "maker": False,
+            },
             "TOAGOQ-4RVAE-SJKS7V": {
                 "ordertxid": "OX2XBN-MGZ4B-XD33ZO",
                 "postxid": "TKH2SE-M7IF5-CFI7LT",

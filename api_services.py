@@ -16,7 +16,7 @@ def account_balances():
         },
     )
     print(f'{datetime.now()} Request for account balances sent.')
-    print(f'{datetime.now()} [API Call] Account balances:\n{res_acc_bal.json()}')
+    # print(f'{datetime.now()} [Kraken API Call] Account balances:\n{res_acc_bal.json()}')
     return res_acc_bal.json()
 
 # Retrieve full trade history
@@ -29,7 +29,7 @@ def trade_history():
         },
     )
     print(f'{datetime.now()} Request for trade history sent.')
-    print(f'{datetime.now()} [API Call] Trade history:\n{res_trade_history.json()}')
+    # print(f'{datetime.now()} [Kraken API Call] Trade history:\n{res_trade_history.json()}')
     return res_trade_history.json()
 
 # Retrieve active order book for a given asset pair
@@ -37,7 +37,7 @@ def order_book(pair):
     print(f'{datetime.now()} Requesting order book...')
     res_order_book = requests.get(f'https://api.kraken.com/0/public/Depth?pair={pair}')
     print(f'{datetime.now()} Request for order book ({pair}) sent.')
-    print(f'{datetime.now()} [API Call] Order book ({pair}):\n{res_order_book.json()}')
+    print(f'{datetime.now()} [Kraken API Call] Order book ({pair}):\n{res_order_book.json()}')
     return res_order_book.json()
 
 # Create a new order
@@ -54,5 +54,5 @@ def add_order(order_type, direction, volume, pair):
         },
     )
     print(f'{datetime.now()} Trade request sent.')
-    print(f'{datetime.now()} [API Call] Trade response:\n{res_add_order.json()}')
+    print(f'{datetime.now()} [Kraken API Call] Trade response:\n{res_add_order.json()}')
     return res_add_order.json()
