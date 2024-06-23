@@ -1,20 +1,14 @@
-*************
-* Algorithm *
-*************
-
-• Read last trade
-• Read order book
-• Calculate differential
-• [Execute trade]
-
-************
-* Comments *
-************
-
-• Cost = Price * Quantity
-• Net Cost = Cost * (1 - 0.4% Taker Fee)
-• https://www.kraken.com/features/fee-schedule
-
 *********
 * To Do *
 *********
+
+• Write test suite for trader.py
+    clean_order_book()
+    last_trade_active_net_cost()
+    crosses_trading_threshold()
+
+• Increase EXPECTED_TRADE_VOLUME to 100 USD equivalent
+• Deploy to PythonAnywhere
+
+• Save formatted Trades History to txt upon each run of main()
+• Saved updated Account Balances to txt upon each run of main()
