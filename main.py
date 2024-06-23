@@ -2,8 +2,14 @@ import os
 
 import api_services, trader
 
+def main():
+    trader.last_trade_net_cost()
+    # Calculate net cost of last trade
+    # Obtain order book
+    # Calculate current net cost of last trade
+
 if __name__ == '__main__':
-    pass
+    main()
 
     ###########################
     # Test: trading algorithm #

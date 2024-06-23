@@ -26,5 +26,9 @@ def clean_order_book(pair, direction, expected_trade_volume):
         else:
             return cleaned_order_book
 
-# def active_net_cost(order_book, quantity):
-#     pass
+def last_trade_net_cost():
+    trade_history = api_services.trade_history()['result']['trades'].items()
+    last_trade = next(iter(trade_history))[1]
+    net_cost = float(last_trade['cost']) - float(last_trade['fee'])
+
+    return net_cost
