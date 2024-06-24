@@ -22,6 +22,20 @@ class TestTrader(unittest.TestCase):
             },
         }
 
+        self.cleaned_order_book_bids = [
+            [60000.40, 1.0],
+            [60000.30, 0.5],
+            [60000.20, 1.5],
+        ]
+
+        self.cleaned_order_book_asks = [
+            [60000.50, 1.0],
+            [60000.60, 0.5],
+            [60000.70, 1.5],
+        ]
+
+        self.trading_fee = 0.004
+
     def test_clean_order_book(self):
         cleaned_order_book_bids = trader.clean_order_book(
             raw_order_book=self.raw_order_book,
@@ -47,8 +61,13 @@ class TestTrader(unittest.TestCase):
         ]
         self.assertEqual(cleaned_order_book_asks, expected_cleaned_order_book_asks)
 
-    def test_last_trade_active_net_cost(self):
-        pass
+    def test_last_trade_real_time_net_cost(self):
+        last_buy_active_net_cost = trader.last_trade_real_time_net_cost(
+            cleaned_order_book=self.cleaned_order_book_bids,
+            last_trade_vol=2.0
+        )
+        expected_last_buy_active_net_cost = 120000.65 * (1 - self.trading_fee)
+        self.assertEqual(last_buy_active_net_cost, expected_last_buy_active_net_cost)
 
     def test_crosses_trading_threshold(self):
         pass
