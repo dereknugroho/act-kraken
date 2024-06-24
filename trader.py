@@ -44,9 +44,9 @@ def last_trade_real_time_net_cost(cleaned_order_book, last_trade_vol):
 
     return real_time_cost * (1 - TRADING_FEE)
 
-# Check if the active net cost of the last trade exceeds the trading threshold
+# Check if the real-time net cost of the last trade exceeds the trading threshold
 def crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, direction, required_return):
     if direction == 'buy':
-        return last_trade_real_time_net_cost > ((1 + required_return) * last_trade_net_cost)
+        return last_trade_real_time_net_cost >= ((1 + required_return) * last_trade_net_cost)
     elif direction == 'sell':
-        return last_trade_real_time_net_cost < ((1 - required_return) * last_trade_net_cost)
+        return last_trade_real_time_net_cost <= ((1 - required_return) * last_trade_net_cost)

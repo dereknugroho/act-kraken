@@ -23,15 +23,15 @@ def main():
     )
     print(f'[main()] cleaned_order_book: {cleaned_order_book}')
 
-    # Calculate active net cost of last trade
-    last_trade_active_net_cost = trader.last_trade_active_net_cost(
+    # Calculate real-time net cost of last trade
+    last_trade_real_time_net_cost = trader.last_trade_real_time_net_cost(
         cleaned_order_book=cleaned_order_book,
         last_trade_vol=float(last_trade['vol'])
     )
-    print(f'[main()] last_trade_active_net_cost ({last_trade["type"]}): {last_trade_active_net_cost}')
+    print(f'[main()] last_trade_real_time_net_cost ({last_trade["type"]}): {last_trade_real_time_net_cost}')
 
     # Execute trade if current net cost of last trade crosses threshold
-    # if trader.crosses_trading_threshold(last_trade_net_cost, last_trade_active_net_cost, direction, REQUIRED_RETURN):
+    # if trader.crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, direction, REQUIRED_RETURN):
     #     if direction == 'buy':
     #         api_services.add_order(
     #             'market',
@@ -47,7 +47,7 @@ def main():
     #             pair=last_trade_pair,
     #         )
     # else:
-    #     print(f'No trade executed.\nPrevious trade was a {direction} at {last_trade_net_cost}.\nCurrent net cost: {last_trade_active_net_cost}.\nDifference of {((last_trade_active_net_cost - last_trade_net_cost) / last_trade_net_cost) * 100}% does not cross {REQUIRED_RETURN * 100}% threshold.')
+    #     print(f'No trade executed.\nPrevious trade was a {direction} at {last_trade_net_cost}.\nCurrent net cost: {last_trade_real_time_net_cost}.\nDifference of {((last_trade_real_time_net_cost - last_trade_net_cost) / last_trade_net_cost) * 100}% does not cross {REQUIRED_RETURN * 100}% threshold.')
 
 if __name__ == '__main__':
     main()

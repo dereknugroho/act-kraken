@@ -2,13 +2,5 @@
 * To Do *
 *********
 
-• Write test suite for trader.py
-    clean_order_book()
-    last_trade_active_net_cost()
-    crosses_trading_threshold()
-
 • Increase EXPECTED_TRADE_VOLUME to 100 USD equivalent
-• Deploy to PythonAnywhere (Subscribe -> Hourly -> :01, :11, :21, :31, :41, :51)
-
-• Save formatted Trades History to txt upon each run of main()
-• Saved updated Account Balances to txt upon each run of main()
+• Deploy to PythonAnywhere (Subscribe -> Hourly Tasks -> :08, :18, :28, :38, :48, :58)

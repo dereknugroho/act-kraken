@@ -32,7 +32,7 @@ def trade_history():
     print(f'{datetime.now()} [Kraken API Call] Trade history:\n{res_trade_history.json()}')
     return res_trade_history.json()
 
-# Retrieve active order book for a given asset pair
+# Retrieve real-time order book for a given asset pair
 def order_book(pair):
     print(f'{datetime.now()} Requesting order book...')
     res_order_book = requests.get(f'https://api.kraken.com/0/public/Depth?pair={pair}')
