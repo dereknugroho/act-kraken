@@ -8,7 +8,7 @@ REQUIRED_RETURN = 0.001
 def main():
     last_trade = next(iter(api_services.trade_history()['result']['trades'].items()))[1]
 
-    # Calculate net cost of last trade
+    # Calculate historical net cost of last trade
     last_trade_net_cost = float(last_trade['cost']) - float(last_trade['fee'])
     print(f'[main()] last_trade_net_cost: {last_trade_net_cost}')
 
