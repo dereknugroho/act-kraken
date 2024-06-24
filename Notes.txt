@@ -8,7 +8,7 @@
     crosses_trading_threshold()
 
 • Increase EXPECTED_TRADE_VOLUME to 100 USD equivalent
-• Deploy to PythonAnywhere
+• Deploy to PythonAnywhere (Subscribe -> Hourly -> :01, :11, :21, :31, :41, :51)
 
 • Save formatted Trades History to txt upon each run of main()
 • Saved updated Account Balances to txt upon each run of main()

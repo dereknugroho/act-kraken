@@ -16,7 +16,7 @@ def account_balances():
         },
     )
     print(f'{datetime.now()} Request for account balances sent.')
-    # print(f'{datetime.now()} [Kraken API Call] Account balances:\n{res_acc_bal.json()}')
+    print(f'{datetime.now()} [Kraken API Call] Account balances:\n{res_acc_bal.json()}')
     return res_acc_bal.json()
 
 # Retrieve full trade history
@@ -29,7 +29,7 @@ def trade_history():
         },
     )
     print(f'{datetime.now()} Request for trade history sent.')
-    # print(f'{datetime.now()} [Kraken API Call] Trade history:\n{res_trade_history.json()}')
+    print(f'{datetime.now()} [Kraken API Call] Trade history:\n{res_trade_history.json()}')
     return res_trade_history.json()
 
 # Retrieve active order book for a given asset pair
