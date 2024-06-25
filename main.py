@@ -2,7 +2,7 @@ import os
 
 import api_services, helpers, trader
 
-EXPECTED_TRADE_VOLUME = 0.0005
+EXPECTED_TRADE_VOLUME = 0.0015
 REQUIRED_RETURN = 0.001
 
 def main():
