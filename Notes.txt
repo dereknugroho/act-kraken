@@ -2,5 +2,4 @@
 * To Do *
 *********
 
-• Increase EXPECTED_TRADE_VOLUME to 100 USD equivalent
 • Deploy to PythonAnywhere (Subscribe -> Hourly Tasks -> :08, :18, :28, :38, :48, :58)
