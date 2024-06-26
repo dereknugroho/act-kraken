@@ -1,5 +1,3 @@
-import api_services
-
 TRADING_FEE = 0.004
 
 # Generate a cleaned list of sorted bid or ask orders

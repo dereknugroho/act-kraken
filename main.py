@@ -1,5 +1,3 @@
-import os
-
 import api_services, helpers, trader
 
 EXPECTED_TRADE_VOLUME = 0.0015
@@ -30,31 +28,31 @@ def main():
     )
     # print(f'Last trade real-time net cost: {last_trade_real_time_net_cost}')
 
-    helpers.write_trade_to_file(
-        trade=last_trade,
-        account_balances=api_services.account_balances()['result']
-    )
-
     # Execute trade if current net cost of last trade crosses threshold
-    # if trader.crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, direction, REQUIRED_RETURN):
-    #     if direction == 'buy':
-    #         api_services.add_order(
-    #             'market',
-    #             'sell',
-    #             EXPECTED_TRADE_VOLUME,
-    #             pair=last_trade_pair,
-    #         )
-    #     elif direction == 'sell':
-    #         api_services.add_order(
-    #             'market',
-    #             'buy',
-    #             EXPECTED_TRADE_VOLUME,
-    #             pair=last_trade_pair,
-    #         )
-    #     # updated_last_trade = next(iter(api_services.trade_history()['result']['trades'].items()))[1]
-    #     # helpers.write_trade_to_file
-    # else:
-    #     print(f'No trade executed.\nPrevious trade was a {direction} at {last_trade_net_cost}.\nCurrent net cost: {last_trade_real_time_net_cost}.\nDifference of {((last_trade_real_time_net_cost - last_trade_net_cost) / last_trade_net_cost) * 100}% does not cross {REQUIRED_RETURN * 100}% threshold.')
+    if trader.crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, last_trade_direction, REQUIRED_RETURN):
+        if last_trade_direction == 'buy':
+            api_services.add_order(
+                'market',
+                'sell',
+                EXPECTED_TRADE_VOLUME,
+                pair=last_trade_pair,
+            )
+        elif last_trade_direction == 'sell':
+            api_services.add_order(
+                'market',
+                'buy',
+                EXPECTED_TRADE_VOLUME,
+                pair=last_trade_pair,
+            )
+
+        # If a trade was executed, append trade details to log
+        updated_last_trade = next(iter(api_services.trade_history()['result']['trades'].items()))[1]
+        helpers.write_trade_to_file(
+            trade=updated_last_trade,
+            account_balances=api_services.account_balances()['result']
+        )
+    else:
+        print(f'No trade executed.\nPrevious trade was a {last_trade_direction} at {last_trade_net_cost}.\nCurrent net cost: {last_trade_real_time_net_cost}.\nDifference of {((last_trade_real_time_net_cost - last_trade_net_cost) / last_trade_net_cost) * 100}% does not cross {REQUIRED_RETURN * 100}% threshold.')
 
 if __name__ == '__main__':
     main()
@@ -74,7 +72,7 @@ if __name__ == '__main__':
     # order_type = 'market'
     # direction = 'sell'
     # volume = 0.0015
-    # pair = 'XBTUSD'
+    # pair = 'XBTCAD'
 
     # api_services.add_order(
     #     order_type,
