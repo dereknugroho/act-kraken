@@ -11,7 +11,12 @@ def write_trade_to_file(trade, account_balances):
     fiat = trade['pair'][5:8]
     net_cost = float(trade['cost']) - float(trade['fee'])
 
-    with open('log.txt', 'a') as file:
+    # Note on log.txt directory:
+    # 'log.txt' => local
+    # 'kraken/log.txt' => PythonAnywhere deployment
+
+    # with open('log.txt', 'a') as file:            # local
+    with open('kraken/log.txt', 'a') as file:       # PythonAnywhere
         file.write('******************************\n')
         file.write(f'[{trade_time} Atlantic] Trade Executed: {direction} {vol} {coin} at {price} {fiat} (Net {net_cost})\n')
         file.write(f'Balances as of [{now} Atlantic]: {account_balances}\n')
