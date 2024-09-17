@@ -1,14 +1,14 @@
 import api_services, helpers, trader
 
 EXPECTED_TRADE_VOLUME = 0.0015
-REQUIRED_RETURN = 0.001
+REQUIRED_RETURN = 0.0005
 
 def main():
     last_trade = next(iter(api_services.trade_history()['result']['trades'].items()))[1]
 
     # Calculate historical net cost of last trade
     last_trade_net_cost = float(last_trade['cost']) - float(last_trade['fee'])
-    print(f'Last trade net cost: {last_trade_net_cost} ({last_trade["type"]} {float(last_trade["vol"])} {last_trade["pair"][1:4]} at {float(last_trade["price"])} {last_trade["pair"][5:8]})')
+    # print(f'Last trade net cost: {last_trade_net_cost} ({last_trade["type"]} {float(last_trade["vol"])} {last_trade["pair"][1:4]} at {float(last_trade["price"])} {last_trade["pair"][5:8]})')
 
     # Obtain order book
     last_trade_pair = last_trade['pair'][1:4] + last_trade['pair'][5:8]
@@ -19,7 +19,7 @@ def main():
         last_trade_direction=last_trade_direction,
         expected_vol=EXPECTED_TRADE_VOLUME
     )
-    print(f'Order book: {cleaned_order_book}')
+    # print(f'Order book: {cleaned_order_book}')
 
     # Calculate real-time net cost of last trade
     last_trade_real_time_net_cost = trader.last_trade_real_time_net_cost(
@@ -27,7 +27,7 @@ def main():
         last_trade_vol=float(last_trade['vol']),
         last_trade_direction=last_trade_direction
     )
-    print(f'Last trade real-time net cost: {last_trade_real_time_net_cost}')
+    # print(f'Last trade real-time net cost: {last_trade_real_time_net_cost}')
 
     # Execute trade if current net cost of last trade crosses threshold
     if trader.crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, last_trade_direction, REQUIRED_RETURN):
