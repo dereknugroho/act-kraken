@@ -39,7 +39,7 @@ python3 main.py
 
 In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. This is task is left up to you.
 
-If you wish to do this in the cloud, you should run it as a collection of Tasks in [PythonAnywhere](https://www.pythonanywhere.com/).
+If you wish to do this in the cloud, you should run the app as a collection of Tasks in [PythonAnywhere](https://www.pythonanywhere.com/).
 
 Note that this app makes 2 or 5 API calls per execution. If you spam it, your API key will become limited, as described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/).
 
