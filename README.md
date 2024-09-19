@@ -55,6 +55,4 @@ Note that this app makes 2 to 5 API calls per execution. If you spam it, your AP
 
 This is not a paid product.
 
-By using any snippets or derivative ideas from this repository, you personally accept any and all risks associated with trading cryptocurrency.
-
-Furthermore, you agree not to pursue any form of legal action against the owner of this repository.
+By using any snippets or derivative ideas from this repository, you personally accept any risks associated with trading cryptocurrency and you agree not to pursue any form of legal action against the owner of this repository.
