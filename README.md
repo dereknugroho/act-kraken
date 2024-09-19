@@ -1,4 +1,4 @@
-# Crypto Auto Trader
+# Crypto Auto Trader (CAT)
 
 Crypto Auto Trader (CAT) is an automated cryptocurrency trading app that executes trades on the [Kraken platform](https://www.kraken.com/).
 
