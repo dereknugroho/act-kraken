@@ -47,7 +47,7 @@ Note that this app makes 2 or 5 API calls **per execution**. If you spam it, you
 
 :white_check_mark: Implement trade logging
 
-:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of bid-ask price movements for "buy low, sell high" modelling in <1 second intervals
+:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of short-term bid-ask spread movements
 
 ## Disclaimer
 
