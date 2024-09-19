@@ -10,12 +10,12 @@ CAT will execute a trade in a specified cryptocurrency that results in a net pro
 
 2. Save your public API key as an environment variable called `API_KEY_KRAKEN`:
 ```
-echo 'API_KEY_KRAKEN=your_public_api_key' >> .env
+echo 'API_KEY_KRAKEN=your_public_kraken_api_key' >> .env
 ```
 
 3. Save your private API key as an environment variable called `API_SEC_KRAKEN`:
 ```
-echo 'API_SEC_KRAKEN=your_private_api_key' >> .env
+echo 'API_SEC_KRAKEN=your_private_kraken_api_key' >> .env
 ```
 
 4. Manually purchase any cryptocurrency using the Kraken web interface.
