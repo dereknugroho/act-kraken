@@ -1,1 +1,1 @@
-# Kraken - CryptoAutoTrader
+# Crypto Auto Trader - Kraken
