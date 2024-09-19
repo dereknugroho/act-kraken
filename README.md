@@ -28,7 +28,7 @@ cd cat-kraken
 
 ## Usage
 
-1. In `main.py`, set the value of `EXPECTED_TRADE_VOLUME` to a value less than or equal to the amount purchased in Step 4 of the Setup section.
+1. In `main.py`, set the value of `EXPECTED_TRADE_VOLUME` to a value less than or equal to the amount manually purchased using the Kraken web interface in Step 4 of the Setup section.
 
 2. Execute `main.py`:
 ```
