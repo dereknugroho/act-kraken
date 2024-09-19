@@ -1,12 +1,12 @@
 # Crypto Auto Trader
 
-Crypto Auto Trader (CAT) is an automated cryptocurrency trading app that executes trades on the [Kraken platform](https://www.kraken.com/){:target="_blank"}.
+Crypto Auto Trader (CAT) is an automated cryptocurrency trading app that executes trades on the <a href="https://www.kraken.com/" target="_blank">Kraken platform</a>.
 
 CAT will execute a trade in a specified cryptocurrency that results in a net profit of 1 basis point. The trading criteria is based on the real-time bid-ask spread and the most recent trade of the same cryptocurrency.
 
 ## Setup
 
-1. Obtain an API key on [Kraken Pro](https://pro.kraken.com/){:target="_blank"}.
+1. Obtain an API key on [Kraken Pro](https://pro.kraken.com/).
 
 2. Save your public API key as an environment variable called `API_KEY_KRAKEN`:
 
@@ -37,9 +37,9 @@ python3 main.py
 
 In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. This is task is left up to you.
 
-Most users prefer to do this in the cloud, in which case you should run it as a Task in [PythonAnywhere](https://www.pythonanywhere.com/){:target="_blank"}.
+Most users prefer to do this in the cloud, in which case you should run it as a Task in [PythonAnywhere](https://www.pythonanywhere.com/).
 
-Note that this app makes 2 or 5 API calls **per execution**. If you spam it, your API key will become limited, as described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/){:target="_blank"}.
+Note that this app makes 2 or 5 API calls **per execution**. If you spam it, your API key will become limited, as described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/).
 
 ## To-Do
 
@@ -47,7 +47,7 @@ Note that this app makes 2 or 5 API calls **per execution**. If you spam it, you
 
 :white_check_mark: Implement trade logging
 
-:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution){:target="_blank"} of bid-ask price movements for "buy low, sell high" modelling in <1 second intervals
+:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of bid-ask price movements for "buy low, sell high" modelling in <1 second intervals
 
 ## Disclaimer
 
