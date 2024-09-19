@@ -1,7 +1,7 @@
 import api_services, helpers, trader
 
-EXPECTED_TRADE_VOLUME = 0.0015
-REQUIRED_RETURN = 0.0005
+EXPECTED_TRADE_VOLUME = 0.0015  # Change EXPECTED_TRADE_VOLUME according to your requirements
+REQUIRED_RETURN = 0.0001
 
 def main():
     last_trade = next(iter(api_services.trade_history()['result']['trades'].items()))[1]
