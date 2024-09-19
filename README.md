@@ -45,11 +45,11 @@ Note that this app makes 2 or 5 API calls **per execution**. If you spam it, you
 
 ## To-Do
 
-:white_check_mark: Develop full test suite
+- [x] Develop full test suite
 
-:white_check_mark: Implement trade logging
+- [x] Implement trade logging
 
-:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of short-term bid-ask spread movements
+- [ ] Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of short-term bid-ask spread movements
 
 ## Disclaimer
 
