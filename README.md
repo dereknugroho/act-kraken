@@ -28,7 +28,7 @@ cd cat-kraken
 
 ## Usage
 
-1. In `main.py`, set the value of `EXPECTED_TRADE_VOLUME` to a value less than or equal to the amount manually purchased using the Kraken web interface in Step 4 of the Setup section.
+1. In `main.py`, set the value of `EXPECTED_TRADE_VOLUME` to a value less than or equal to the amount manually purchased using the Kraken web interface in Step 4 of the **Setup** section.
 
 2. Execute `main.py`:
 ```
@@ -41,7 +41,7 @@ In order to maximize profitability, `main.py` must be executed at regular interv
 
 Most users prefer to do this in the cloud, in which case you should run it as a Task in [PythonAnywhere](https://www.pythonanywhere.com/).
 
-Note that this app makes 2 or 5 API calls **per execution**. If you spam it, your API key will become limited, as described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/).
+Note that this app makes 2 or 5 API calls per execution. If you spam it, your API key will become limited, as described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/).
 
 ## To-Do
 
