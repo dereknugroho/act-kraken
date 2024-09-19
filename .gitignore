@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__
 *.csv
+log.txt
+Trades History
+Order Book

@@ -1,8 +1,0 @@
-******************************
-[Jun 24, 2024 6:34:59 PM Atlantic] Trade Executed: Buy 0.0006 XBT at 81803.3 CAD (Net 48.88565)
-Balances as of [Jun 25, 2024 1:38:40 PM Atlantic]: {'XXBT': '0.0017205000', 'ZCAD': '14.0561', 'ZUSD': '24.3489'}
-******************************
-******************************
-[Jun 24, 2024 6:34:59 PM Atlantic] Trade Executed: Buy 0.0006 XBT at 81803.3 CAD (Net 48.88565)
-Balances as of [Jun 25, 2024 1:44:32 PM Atlantic]: {'XXBT': '0.0017205000', 'ZCAD': '14.0561', 'ZUSD': '24.3489'}
-******************************
