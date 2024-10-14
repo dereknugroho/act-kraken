@@ -43,14 +43,6 @@ If you wish to do this in the cloud, you should run the app as a collection of T
 
 Note that this app makes 2 to 5 API calls per execution. If you spam it, your API key will be subjected to the limits described [here](https://docs.kraken.com/api/docs/guides/spot-rest-ratelimits/).
 
-## To-Do
-
-:white_check_mark: Develop full test suite
-
-:white_check_mark: Implement trade logging
-
-:x: Utilize ML libraries to fit a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution) of short-term bid-ask spread movements
-
 ## Disclaimer
 
 This is not a paid product.
