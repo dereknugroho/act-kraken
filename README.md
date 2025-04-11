@@ -6,7 +6,7 @@ CAT will execute a trade in a specific cryptocurrency if the result will be a ne
 
 ## Setup
 
-1. Obtain an API key on [Kraken Pro](https://pro.kraken.com/).
+1. Obtain an API key from [Kraken](https://pro.kraken.com/).
 
 2. Save your public API key as an environment variable called `API_KEY_KRAKEN`:
 ```
@@ -47,4 +47,4 @@ Note that this app makes 2 to 5 API calls per execution. If you spam it, your AP
 
 This is not a paid product.
 
-By using any snippets or derivative ideas from this repository, you personally accept any risks associated with trading cryptocurrency and you agree not to pursue any form of legal action against the owner of this repository.
+By using any snippets or derivative ideas from this repository, you personally accept any and all risks associated with trading cryptocurrency.
