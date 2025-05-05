@@ -69,5 +69,4 @@ def open_orders():
         },
     )
     # print(f'{datetime.now()} [Kraken API Call] Open orders:\n{res_open_orders.json()}')
-    print(res_open_orders)
     return res_open_orders.json()

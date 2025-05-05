@@ -1,4 +1,5 @@
-TRADING_FEE = 0.004
+MAKER_FEE = 0.0025
+TAKER_FEE = 0.004
 
 # # Generate a cleaned list of sorted bid or ask orders
 # def clean_order_book(raw_order_book, kraken_pair_id, last_trade_direction, expected_vol):
@@ -25,33 +26,3 @@ TRADING_FEE = 0.004
 #             break
     
 #     return cleaned_order_book
-
-# # Calculate the real-time net cost of the previous trade
-# def last_trade_real_time_net_cost(cleaned_order_book, last_trade_vol, last_trade_direction):
-#     real_time_cost = 0.0
-#     cumulative_order_vol = 0.0
-
-#     for order in cleaned_order_book:
-#         cumulative_order_vol += order[1]
-#         if cumulative_order_vol <= last_trade_vol:
-#             real_time_cost += (order[1] * order[0])
-#         else:
-#             excess_trade_vol = last_trade_vol - cumulative_order_vol + order[1]
-#             real_time_cost += (excess_trade_vol * order[0])
-#             break
-
-#     if last_trade_direction == 'buy':
-#         return real_time_cost * (1 - TRADING_FEE)
-#     elif last_trade_direction == 'sell':
-#         return real_time_cost * (1 + TRADING_FEE)
-#     else:
-#         raise ValueError('last_trade_direction argument must be "buy" or "sell"')
-
-# # Check if the real-time net cost of the last trade crosses the trading threshold
-# def crosses_trading_threshold(last_trade_net_cost, last_trade_real_time_net_cost, last_trade_direction, required_return):
-#     if last_trade_direction == 'buy':
-#         return last_trade_real_time_net_cost >= ((1 + required_return) * last_trade_net_cost)
-#     elif last_trade_direction == 'sell':
-#         return last_trade_real_time_net_cost <= ((1 - required_return) * last_trade_net_cost)
-#     else:
-#         raise ValueError('last_trade_direction argument must be "buy" or "sell"')
