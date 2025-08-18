@@ -1,28 +1,26 @@
+import api_services
+
 MAKER_FEE = 0.0025
 TAKER_FEE = 0.004
 
-# # Generate a cleaned list of sorted bid or ask orders
-# def clean_order_book(raw_order_book, kraken_pair_id, last_trade_direction, expected_vol):
-#     cleaned_order_book = []
-#     cumulative_trade_vol = 0.0
+def new_limit_sell_price(last_trade, required_return):
+    """
+    Compute the limit sell price for a new limit order.
 
-#     # Retrieve bid or ask order book
-#     if last_trade_direction == 'buy':
-#         raw_order_book = raw_order_book['result'][kraken_pair_id]['bids']
-#     elif last_trade_direction == 'sell':
-#         raw_order_book = raw_order_book['result'][kraken_pair_id]['asks']
-#     else:
-#         raise ValueError('last_trade_direction argument must be "buy" or "sell"')
+    The new limit sell price is based on the last trade and the required return.
+    """
+    fee = MAKER_FEE if last_trade["ordertype"] == "limit" else TAKER_FEE
 
-#     # Generate clean order book
-#     for raw_order in raw_order_book:
-#         cleaned_order = []
-#         cleaned_order.append(float(raw_order[0]))
-#         cleaned_order.append(float(raw_order[1]))
-#         cleaned_order_book.append(cleaned_order)
-#         cumulative_trade_vol += float(raw_order[1])
+    return float(last_trade["price"]) * (1 + required_return + fee)
 
-#         if cumulative_trade_vol > expected_vol:
-#             break
-    
-#     return cleaned_order_book
+def last_trade():
+    """Get details of the most recent trade."""
+    return next(iter(api_services.trade_history()["result"]["trades"].items()))[1]
+
+def get_last_open_order_id(open_orders):
+    """Get ID of the most recently opened open order."""
+    return list(open_orders["result"]["open"].keys())[0]
+
+def trading_fee():
+    """Calculate trading fee based on 30-day volume."""
+    pass

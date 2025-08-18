@@ -1,28 +1,58 @@
 import base64
 import hashlib
 import hmac
-import os
-import requests
+import http
+import json
+import time
 import urllib.parse
 
-base_url = 'https://api.kraken.com'
-api_key = os.environ['API_KEY_KRAKEN']
-api_sec = os.environ['API_SEC_KRAKEN']
-
-# Generate signature
-def get_kraken_signature(urlpath, data, secret):
-    postdata = urllib.parse.urlencode(data)
-    encoded = (str(data['nonce']) + postdata).encode()
-    message = urlpath.encode() + hashlib.sha256(encoded).digest()
-
-    mac = hmac.new(base64.b64decode(secret), message, hashlib.sha512)
-    sigdigest = base64.b64encode(mac.digest())
-    return sigdigest.decode()
-
-# Attaches auth headers and returns results of a POST request
-def kraken_request(uri_path, data):
+def request(method: str = "GET", path: str = "", query: dict | None = None, body: dict | None = None, public_key: str = "", private_key: str = "", environment: str = "") -> http.client.HTTPResponse:
+    url = environment + path
+    query_str = ""
+    if query is not None and len(query) > 0:
+        query_str = urllib.parse.urlencode(query)
+        url += "?" + query_str
+    nonce = ""
+    if len(public_key) > 0:
+        if body is None:
+            body = {}
+        nonce = body.get("nonce")
+        if nonce is None:
+            nonce = get_nonce()
+            body["nonce"] = nonce
     headers = {}
-    headers['API-Key'] = api_key
-    headers['API-Sign'] = get_kraken_signature(uri_path, data, api_sec)
-    req = requests.post((base_url + uri_path), headers=headers, data=data)
-    return req
+    body_str = ""
+    if body is not None and len(body) > 0:
+        body_str = json.dumps(body)
+        headers["Content-Type"] = "application/json"
+    if len(public_key) > 0:
+        headers["API-Key"] = public_key
+        headers["API-Sign"] = get_signature(private_key, query_str+body_str, nonce, path)
+    req = urllib.request.Request(
+        method=method,
+        url=url,
+        data=body_str.encode(),
+        headers=headers,
+    )
+    return urllib.request.urlopen(req)
+
+def get_nonce() -> str:
+    return str(int(time.time() * 1000))
+
+def get_signature(private_key: str, data: str, nonce: str, path: str) -> str:
+    return sign(
+        private_key=private_key,
+        message=path.encode() + hashlib.sha256(
+            (nonce + data)
+        .encode()
+        ).digest()
+    )
+
+def sign(private_key: str, message: bytes) -> str:
+    return base64.b64encode(
+        hmac.new(
+            key=base64.b64decode(private_key),
+            msg=message,
+            digestmod=hashlib.sha512,
+        ).digest()
+    ).decode()

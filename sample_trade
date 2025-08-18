@@ -1,0 +1,18 @@
+{
+    "ordertxid": "OIJLVV-FSHHS-GLKDNF",
+    "postxid": "TKH2SE-M7IF5-CFI7LT",
+    "pair": "XXBTZUSD",
+    "aclass": "forex",
+    "time": 1745430984.605774,
+    "type": "sell",
+    "ordertype": "limit",
+    "price": "93875.10000",
+    "cost": "99.99576",
+    "fee": "0.24999",
+    "vol": "0.00106520",
+    "margin": "0.00000",
+    "leverage": "0",
+    "misc": "",
+    "trade_id": 82418098,
+    "maker": True,
+}
