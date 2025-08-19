@@ -41,6 +41,7 @@ def trade(last_trade: dict) -> dict:
             pair="BTC/USD",
             price=str(new_limit_price),
         )
+        print(f'New limit sell order has been placed: {new_order}')
     elif last_trade["type"] == "sell" and not api_services.open_orders()["result"]["open"]:
         new_order = api_services.add_order(
             ordertype="limit",
@@ -49,3 +50,4 @@ def trade(last_trade: dict) -> dict:
             pair="BTC/USD",
             price=str(new_limit_price),
         )
+        print(f'New limit buy order has been placed: {new_order}')
