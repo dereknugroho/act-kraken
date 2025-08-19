@@ -1,8 +1,6 @@
 import services
 import trade_engine
 
-import api_services
-
 def main():
     trade_engine.trade(services.last_trade())
 

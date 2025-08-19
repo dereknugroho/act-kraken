@@ -25,6 +25,7 @@ def trade(last_trade: dict) -> dict:
         fee=trading_fee,
     )
 
+    # Calculate maximum purchase volume
     max_buy_vol = services.maximum_buy_volume(
         account_balances=api_services.account_balances(),
         price=new_limit_price,

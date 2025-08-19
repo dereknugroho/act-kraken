@@ -15,16 +15,18 @@ def trading_fee(pair: str, kraken_ticker: str, ordertype: str) -> float:
     ...     ordertype="limit",
     ... )
     """
-    fee = api_services.trade_volume(pair)["result"]["fees"][kraken_ticker]["fee"]
+    trade_volume = api_services.trade_volume(pair)["result"]
 
+    fee = trade_volume["fees"][kraken_ticker]["fee"]
+    
     if ordertype == "limit":
-        fee = api_services.trade_volume(pair)["result"]["fees_maker"][kraken_ticker]["fee"]
+        fee = trade_volume["fees_maker"][kraken_ticker]["fee"]
         
     return float(fee) / 100
 
 def new_limit_price(last_trade: dict, required_return: float, fee: float) -> float:
     """
-    Compute the limit price for a new limit order. The new limit price is
+    Calculate the limit price of a new limit order. The new limit price is
     based on the following:
 
     1) Last trade price
@@ -47,7 +49,7 @@ def new_limit_price(last_trade: dict, required_return: float, fee: float) -> flo
 
 def maximum_buy_volume(account_balances: dict, price: float, precision: int):
     """
-    Compute the maximum purchase volume.
+    Calculate the maximum purchase volume at a given price.
 
     Example:
     >>> maximum_buy_volume(
