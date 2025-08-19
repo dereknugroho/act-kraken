@@ -6,8 +6,8 @@ CAT-Kraken will execute a trade in BTC/USD if the result will be a net profit of
 
 The trading criteria is based on:
 
-- Price of your latest complete BTC/USD trade
-- 30-day trade volume (for fee calculation)
+- The price of your latest completed BTC/USD trade
+- Your 30-day trade volume on the Kraken platform
 
 ## Setup
 
@@ -41,9 +41,11 @@ python3 main.py
 
 ## Important
 
-In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. This task is left up to you.
+- In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. This task is left up to you.
 
-This app makes up to 5 API calls per execution. Kraken API usage limits are described [here](https://support.kraken.com/articles/360045239571-trading-rate-limits).
+- **DO NOT EXECUTE ANY TRADE OR PLACE NEW ORDERS IN BETWEEN EXECUTIONS OF `main.py`. IF YOU WANT TO TO EXECUTE TRADES OR PLACE NEW ORDERS BETWEEN EXECUTIONS OF `main.py`, YOU MUST REPEAT STEP 4 FROM THE SETUP SECTION PRIOR TO THE NEXT EXECUTION OF `main.py`.**
+
+- This app makes up to 5 API calls per execution. Kraken API usage limits are described [here](https://support.kraken.com/articles/360045239571-trading-rate-limits).
 
 ## Disclaimer
 
