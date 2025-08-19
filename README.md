@@ -2,7 +2,7 @@
 
 Crypto Auto Trader on Kraken (CAT-Kraken) is an automated cryptocurrency trading app that executes trades on the [Kraken platform](https://www.kraken.com/).
 
-CAT will execute a trade in a specific cryptocurrency if the result will be a net profit of 1 basis point. This is achieved through the usage of limit orders.
+CAT will execute a trade in BTC/USD if the result will be a net profit of 1 basis point. This is achieved through the usage of limit orders.
 
 The trading criteria is based on:
 
