@@ -41,9 +41,9 @@ python3 main.py
 
 ## Important
 
-- In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. This task is left up to you.
+- In order to maximize profitability, `main.py` must be executed at regular intervals for an extended period of time. The recommended interval is 60 seconds. This task is left up to you.
 
-- **DO NOT EXECUTE ANY TRADE OR PLACE NEW ORDERS IN BETWEEN EXECUTIONS OF `main.py`. IF YOU WANT TO TO EXECUTE TRADES OR PLACE NEW ORDERS BETWEEN EXECUTIONS OF `main.py`, YOU MUST REPEAT STEP 4 FROM THE SETUP SECTION PRIOR TO THE NEXT EXECUTION OF `main.py`.**
+- **DO NOT EXECUTE ANY TRADES OR PLACE NEW ORDERS IN BETWEEN EXECUTIONS OF `main.py`.** If you wish to execute trades or place new orders in between executions of `main.py`, you must first purchase BTC/USD prior to the next execution of `main.py`.
 
 - This app makes up to 5 API calls per execution. Kraken API usage limits are described [here](https://support.kraken.com/articles/360045239571-trading-rate-limits).
 
