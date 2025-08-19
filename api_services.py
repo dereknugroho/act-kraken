@@ -30,39 +30,18 @@ def trade_history():
 
     return json.loads(response.read().decode('utf-8'))
 
-def order_book(pair):
-    """
-    Retrieve order book for a given asset pair.
-
-    Example:
-        >>> order_book("BTC/USD")
-    """
-    response = kraken_auth.request(
-        method="GET",
-        path="/0/public/Depth",
-        query={
-            "pair": pair,
-            "count": 10,
-        },
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
-
-def add_order(ordertype, type, volume, pair, price):
+def add_order(ordertype: str, type: str, volume: str, pair: str, price: str):
     """
     Place a new order.
 
-    Official docs: https://docs.kraken.com/api/docs/rest-api/add-order
-
-    Examples:
-        >>> add_order(
-                ordertype="limit",
-                type="buy",
-                volume="1",
-                pair="BTC/USD",
-                price="1"
-            )
+    Example:
+    >>> add_order(
+    ...     ordertype="limit",
+    ...     type="buy",
+    ...     volume="1",
+    ...     pair="BTC/USD",
+    ...     price="1",
+    ... )
     """
     response = kraken_auth.request(
         method="POST",
@@ -93,7 +72,7 @@ def open_orders():
 
     return json.loads(response.read().decode('utf-8'))
 
-def cancel_all_orders():
+def cancel_all_open_orders():
     """Cancel all open orders."""
     response = kraken_auth.request(
       method="POST",
@@ -105,16 +84,42 @@ def cancel_all_orders():
 
     return json.loads(response.read().decode('utf-8'))
 
-def cancel_last_open_order(txid):
-    """Cancel last open order."""
+def cancel_open_order(txid: str):
+    """
+    Cancel an open order.
+
+    Example:
+    >>> cancel_order(txid="OZUCWN-2ZS5T-JN2VN6")
+    """
     response = kraken_auth.request(
         method="POST",
         path="/0/private/CancelOrder",
         body={
-            "txid": "OZUCWN-2ZS5T-JN2VN6",
+            "txid": txid,
         },
-        public_key="",
-        private_key="",
+        public_key=public_key,
+        private_key=private_key,
+        environment="https://api.kraken.com",
+    )
+
+    return json.loads(response.read().decode('utf-8'))
+
+def trade_volume(pair: str):
+    """
+    Get 30 day USD trading volume and fee schedule for
+    a given asset pair (e.g. BTC/USD).
+
+    Example:
+    >>> trade_volume(pair="BTC/USD")
+    """
+    response = kraken_auth.request(
+        method="POST",
+        path="/0/private/TradeVolume",
+        body={
+            "pair": "BTC/USD"
+        },
+        public_key=public_key,
+        private_key=private_key,
         environment="https://api.kraken.com",
     )
 
