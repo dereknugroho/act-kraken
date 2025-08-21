@@ -36,7 +36,7 @@ cd cat-kraken
 Execute `main.py`:
 
 ```
-python3 main.py
+>>> python3 main.py
 ```
 
 ## Important

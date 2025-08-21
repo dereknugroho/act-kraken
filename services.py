@@ -1,3 +1,5 @@
+import math
+
 import api_services
 
 def last_trade() -> dict:
@@ -30,10 +32,11 @@ def new_limit_price(last_trade: dict, required_return: float, fee: float) -> flo
     based on the following:
 
     1) Last trade price
-    2) Trading fee
-    3) Required return
+    2) Required return
+    3) Trading fee
 
     Note: 1% == 0.01
+    Note: return value can be precise only to 10^-1
 
     Example:
     >>> new_limit_price(
@@ -43,9 +46,9 @@ def new_limit_price(last_trade: dict, required_return: float, fee: float) -> flo
     ... )
     """
     if last_trade["type"] == "buy":
-        return float(last_trade["price"]) * (1 + required_return + fee)
+        return math.floor(float(last_trade["price"]) * (1 + required_return + fee) * 10) / 10
     elif last_trade["type"] == "sell":
-        return float(last_trade["price"]) * (1 - fee)
+        return math.floor(float(last_trade["price"]) * (1 - fee) * 10) / 10
 
 def maximum_buy_volume(account_balances: dict, price: float, precision: int):
     """
@@ -62,3 +65,17 @@ def maximum_buy_volume(account_balances: dict, price: float, precision: int):
         raise ValueError('precision argument must be at least 0.')
 
     return (1 - 10 ** -precision) * (float(account_balances["result"]["ZUSD"]) / price)
+
+def reduce_trade_volume(last_trade_volume: float, reduction_factor: float = 0.995):
+    """
+    Reduce a trade volume in order to ensure sufficient balances for an upcoming limit order.
+
+    Example:
+    >>> reduce_trade_volume(last_trade_volume=1.0)
+    0.995
+    """
+    # Ensure reduction factor is within (0, 1)
+    if reduction_factor <= 0 or reduction_factor >= 1:
+        raise ValueError('reduction_factor must be greater than 0 and less than 1')
+
+    return reduction_factor * last_trade_volume

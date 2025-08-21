@@ -1,11 +1,11 @@
-import http.client
-import urllib.request
-import urllib.parse
+import base64
 import hashlib
 import hmac
-import base64
+import http.client
 import json
 import time
+import urllib.parse
+import urllib.request
 
 def request(method: str = "GET", path: str = "", query: dict | None = None, body: dict | None = None, public_key: str = "", private_key: str = "", environment: str = "") -> http.client.HTTPResponse:
     url = environment + path
