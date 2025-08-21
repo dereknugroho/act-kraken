@@ -104,7 +104,7 @@ def cancel_open_order(txid: str):
 
     return json.loads(response.read().decode('utf-8'))
 
-def trade_volume(pair: str):
+def trade_volume(pair: str = "BTC/USD"):
     """
     Get 30 day USD trading volume and fee schedule for
     a given asset pair (e.g. BTC/USD).

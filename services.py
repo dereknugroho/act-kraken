@@ -26,7 +26,7 @@ def trading_fee(pair: str, kraken_ticker: str, ordertype: str) -> float:
         
     return float(fee) / 100
 
-def new_limit_price(last_trade: dict, required_return: float, fee: float) -> float:
+def new_limit_price(last_trade: dict, required_return: float = 0.0001, fee: float = 0.004) -> float:
     """
     Calculate the limit price of a new limit order. The new limit price is
     based on the following:
