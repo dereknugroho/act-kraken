@@ -8,6 +8,7 @@ import urllib.parse
 import urllib.request
 
 def request(method: str = "GET", path: str = "", query: dict | None = None, body: dict | None = None, public_key: str = "", private_key: str = "", environment: str = "") -> http.client.HTTPResponse:
+    """Request authentication procedure for Kraken API."""
     url = environment + path
     query_str = ""
     if query is not None and len(query) > 0:
