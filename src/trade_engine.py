@@ -1,7 +1,7 @@
-import api_services
-import services
+import src.api_services
+import src.services
 
-REQUIRED_RETURN = 0.0001
+from src.config import config
 
 def trade(last_trade: dict) -> dict:
     """
@@ -24,7 +24,7 @@ def trade(last_trade: dict) -> dict:
         # Calculate limit price for new limit order
         new_limit_price = services.new_limit_price(
             last_trade=last_trade,
-            required_return=REQUIRED_RETURN,
+            required_return=config["trading"]["required_return"],
             fee=trading_fee,
         )
 
