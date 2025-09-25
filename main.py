@@ -1,8 +1,9 @@
-import services
-import trade_engine
+from src.services import last_trade
+from src.trade_engine import trade
 
-def main():
-    trade_engine.trade(services.last_trade())
+def main(last_trade):
+    trade(last_trade)
 
 if __name__ == '__main__':
-    main()
+    main(last_trade())
+
