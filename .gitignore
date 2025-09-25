@@ -1,7 +1,10 @@
+# OS files
 .DS_Store
-__pycache__
-*.csv
-log.txt
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Generated outputs
+logs/
 sample*
-infinite_run_main_wrapper.py
-temp.py
