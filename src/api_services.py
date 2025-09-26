@@ -1,88 +1,43 @@
-import json
-import os
-
-import kraken_auth
-
-public_key = os.environ['API_KEY_KRAKEN']
-private_key = os.environ['API_SEC_KRAKEN']
+from src.api_client import make_request
+from src.config import config
 
 def account_balances():
     """Retrieve account balances for all assets."""
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/Balance",
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    return make_request(config["endpoints"]["balances"])
 
 def trade_history():
     """Retrieve full trade history."""
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/TradesHistory",
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
+    return make_request(config["endpoints"]["trade_history"])
 
-    return json.loads(response.read().decode('utf-8'))
-
-def add_order(ordertype: str, type: str, volume: str, pair: str, price: str):
+def add_order(ordertype: str, direction: str, volume: str, pair: str, price: str):
     """
     Place a new order.
 
     Example:
     >>> add_order(
     ...     ordertype="limit",
-    ...     type="buy",
+    ...     direction="buy",
     ...     volume="1",
     ...     pair="BTC/USD",
     ...     price="1",
     ... )
     """
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/AddOrder",
-        body={
-            "ordertype": ordertype,
-            "type": type,
-            "volume": volume,
-            "pair": pair,
-            "price": price,
-        },
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    body = {
+        "ordertype": ordertype,
+        "type": direction,
+        "volume": volume,
+        "pair": pair,
+        "price": price,
+    }
+    return make_request(config["endpoints"]["add_order"], body)
 
 def open_orders():
     """Retrieve all open orders."""
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/OpenOrders",
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    return make_request(config["endpoints"]["open_orders"])
 
 def cancel_all_open_orders():
     """Cancel all open orders."""
-    response = kraken_auth.request(
-      method="POST",
-      path="/0/private/CancelAll",
-      public_key=public_key,
-      private_key=private_key,
-      environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    return make_request(config["endpoints"]["cancel_all"])
 
 def cancel_open_order(txid: str):
     """
@@ -91,18 +46,8 @@ def cancel_open_order(txid: str):
     Example:
     >>> cancel_order(txid="OZUCWN-2ZS5T-JN2VN6")
     """
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/CancelOrder",
-        body={
-            "txid": txid,
-        },
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    body = {"txid": txid}
+    return make_request(config["endpoints"]["cancel_order"], body)
 
 def trade_volume(pair: str = "BTC/USD"):
     """
@@ -112,15 +57,5 @@ def trade_volume(pair: str = "BTC/USD"):
     Example:
     >>> trade_volume(pair="BTC/USD")
     """
-    response = kraken_auth.request(
-        method="POST",
-        path="/0/private/TradeVolume",
-        body={
-            "pair": "BTC/USD"
-        },
-        public_key=public_key,
-        private_key=private_key,
-        environment="https://api.kraken.com",
-    )
-
-    return json.loads(response.read().decode('utf-8'))
+    body = {"pair": pair}
+    return make_request(config["endpoints"]["trade_volume"], body)
