@@ -1,6 +1,6 @@
 import math
 
-import api_services
+import src.api_services
 
 def last_trade() -> dict:
     """Get details of the last successful trade."""
