@@ -1,4 +1,4 @@
-from src.api_client import make_request
+from src.kraken_client import make_request
 from src.config import config
 
 def account_balances():
