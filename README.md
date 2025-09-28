@@ -1,8 +1,8 @@
-# Crypto Auto Trader on Kraken (CAT-Kraken)
+# Automated Cryptocurrency Trader
 
-Crypto Auto Trader on Kraken (CAT-Kraken) is an automated cryptocurrency trading app that executes trades on the [Kraken platform](https://www.kraken.com/).
+The Automated Cryptocurrency Trader is an automated cryptocurrency trading app that executes trades on the [Kraken crypto platform](https://www.kraken.com/).
 
-CAT-Kraken will execute a trade in BTC/USD if the result will be a net profit of 1 basis point. This is achieved through the usage of limit orders.
+The app will execute a [limit order](https://www.investopedia.com/terms/l/limitorder.asp) in BTC/USD if the result will be a net profit of 1 basis point.
 
 The trading criteria is based on:
 
@@ -27,8 +27,8 @@ echo 'API_SEC_KRAKEN=your_private_kraken_api_key' >> .env
 
 5. Clone this repository:
 ```
-git clone https://github.com/dereknugroho/cat-kraken.git
-cd cat-kraken
+git clone https://github.com/dereknugroho/act-kraken.git
+cd act-kraken
 ```
 
 ## Usage
@@ -51,4 +51,4 @@ Execute `main.py`:
 
 This is not a paid product. By using any snippets or derivative ideas from this repository, you personally accept any and all risks associated with trading cryptocurrency.
 
-Furthermore, you agree not to pursue legal action against the owner of this repository for any consequences related to the usage of any part of the source code herein.
+Furthermore, you agree not to pursue legal action against the owner of this repository for any consequences related to the usage of any part of the source code in this repository.
