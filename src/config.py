@@ -3,7 +3,7 @@ import os
 
 from pathlib import Path
 
-CONFIG_PATH = Path(__file__).parent.parent / "config.json"
+CONFIG_PATH = Path(__file__).parent.parent / "config/config.json"
 
 with open(CONFIG_PATH) as f:
     config = json.load(f)
