@@ -4,7 +4,7 @@ from src.config import config, get_kraken_keys
 from src.kraken_auth import request
 
 def make_request(path: str, body: dict = None):
-    """A function for making API requests."""
+    """A wrapper for making API requests."""
     public_key, private_key = get_kraken_keys()
     response = request(
         method=config["method"],
