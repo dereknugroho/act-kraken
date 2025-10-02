@@ -1,6 +1,6 @@
 import pytest
 
-import api_services
+from src import kraken_services
 
 def test_account_balances():
     account_balances = api_services.account_balances()["result"]

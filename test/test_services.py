@@ -1,6 +1,6 @@
 import pytest
 
-import services
+from src import trading_services
 
 def test_last_trade():
     last_trade = services.last_trade()
