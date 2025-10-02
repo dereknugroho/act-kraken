@@ -1,10 +1,10 @@
 import math
 
-import src.api_services
+from src import kraken_services
 
 def last_trade() -> dict:
     """Get details of the last successful trade."""
-    return next(iter(api_services.trade_history()["result"]["trades"].items()))[1]
+    return next(iter(kraken_services.trade_history()["result"]["trades"].items()))[1]
 
 def trading_fee(pair: str, kraken_ticker: str, ordertype: str) -> float:
     """
@@ -17,7 +17,7 @@ def trading_fee(pair: str, kraken_ticker: str, ordertype: str) -> float:
     ...     ordertype="limit",
     ... )
     """
-    trade_volume = api_services.trade_volume(pair)["result"]
+    trade_volume = kraken_services.trade_volume(pair)["result"]
 
     fee = trade_volume["fees"][kraken_ticker]["fee"]
     
@@ -40,7 +40,7 @@ def new_limit_price(last_trade: dict, required_return: float = 0.0001, fee: floa
 
     Example:
     >>> new_limit_price(
-    ...     last_trade=helpers.last_trade(),
+    ...     last_trade=last_trade(),
     ...     required_return=0.0001,
     ...     fee=0.0025,
     ... )
@@ -56,13 +56,13 @@ def maximum_buy_volume(account_balances: dict, price: float, precision: int):
 
     Example:
     >>> maximum_buy_volume(
-    ...     account_balances=api_services.account_balances(),
+    ...     account_balances=kraken_services.account_balances(),
     ...     price=10000.0,
     ...     precision=5
     ... )
     """
     if precision < 0:
-        raise ValueError('precision argument must be at least 0.')
+        raise ValueError('precision must be an int larger than 0')
 
     return (1 - 10 ** -precision) * (float(account_balances["result"]["ZUSD"]) / price)
 
@@ -72,7 +72,6 @@ def reduce_trade_volume(last_trade_volume: float, reduction_factor: float = 0.99
 
     Example:
     >>> reduce_trade_volume(last_trade_volume=1.0)
-    0.995
     """
     # Ensure reduction factor is within (0, 1)
     if reduction_factor <= 0 or reduction_factor >= 1:
