@@ -1,3 +1,11 @@
+"""
+This module "kraken_auth.py" is taken directly from the official Kraken
+API documentation. All functions and logic originate from Kraken’s published
+examples, with minimal/no modification.
+
+More info: https://docs.kraken.com/api/docs/guides/spot-rest-intro
+"""
+
 import base64
 import hashlib
 import hmac
@@ -8,7 +16,6 @@ import urllib.parse
 import urllib.request
 
 def request(method: str = "GET", path: str = "", query: dict | None = None, body: dict | None = None, public_key: str = "", private_key: str = "", environment: str = "") -> http.client.HTTPResponse:
-    """Request authentication procedure for Kraken API."""
     url = environment + path
     query_str = ""
     if query is not None and len(query) > 0:
