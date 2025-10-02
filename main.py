@@ -6,4 +6,3 @@ def main(last_trade):
 
 if __name__ == '__main__':
     main(last_trade())
-
