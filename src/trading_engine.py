@@ -1,5 +1,13 @@
+from config.config import config
+from config.logging import setup_logger, INFO
 from src import kraken_services, trading_services
-from src.config import config
+
+# Initialize logger
+logger = setup_logger(
+    __name__,
+    config['logging']['trading_engine_filepath'],
+    INFO,
+)
 
 def trade(last_trade: dict) -> None:
     """
@@ -11,6 +19,8 @@ def trade(last_trade: dict) -> None:
 
     # If there are no open orders, prepare to create a limit order
     if not kraken_services.open_orders()["result"]["open"]:
+        logger.info(f'No open orders detected. Calculating price for new limit order.')
+
         # Calculate trading fee
         fee = trading_services.trading_fee(
             pair="BTC/USD",
@@ -25,8 +35,10 @@ def trade(last_trade: dict) -> None:
             fee=fee,
         )
 
+        logger.info(f'Price for new limit order: {limit_price}')
         # If the last trade was a buy:
         if last_trade["type"] == "buy":
+            logger.info(f'Last successful trade was a BUY. Placing a limit SELL order.')
 
             # Reduce the limit sell volume by a small amount to ensure sufficient crypto balance
             volume = trading_services.reduce_trade_volume(float(last_trade["vol"]))
@@ -40,8 +52,11 @@ def trade(last_trade: dict) -> None:
                 price=str(limit_price),
             )
 
+            logger.info(f'Limit SELL order placed for {volume} at {price}.')
+
         # If the last trade was a sell:
         elif last_trade["type"] == "sell":
+            logger.info(f'Last successful trade was a SELL. Placing a limit BUY order.')
 
             # Calculate maximum purchase volume
             max_buy_vol = trading_services.maximum_buy_volume(
@@ -58,5 +73,5 @@ def trade(last_trade: dict) -> None:
                 pair="BTC/USD",
                 price=str(limit_price),
             )
-    else:
-        pass
+
+            logger.info(f'Limit BUY order placed for {max_buy_vol} at {limit_price}.')
