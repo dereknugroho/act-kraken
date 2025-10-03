@@ -1,5 +1,13 @@
+from config.config import config
+from config.logging import setup_logger, DEBUG
 from src.kraken_client import make_request
-from src.config import config
+
+# Initialize logger
+logger = setup_logger(
+    __name__,
+    config['logging']['kraken_services_filepath'],
+    DEBUG,
+)
 
 def account_balances():
     """Retrieve account balances for all assets."""
