@@ -1,6 +1,6 @@
 import json
 
-from src.config import config, get_kraken_keys
+from config.config import config, get_kraken_keys
 from src.kraken_auth import request
 
 def make_request(path: str, body: dict = None):
